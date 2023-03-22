@@ -53,16 +53,16 @@ const countNeighbors = (currentGeneration, row, col) => {
 
     for (let i = row - 1; i <= row + 1; i++) {
         for (let j = col - 1; j <= col + 1; j++) {
-            if (
+            const isValidIndex = (
                 i >= 0 &&
                 i < height &&
                 j >= 0 &&
-                j < width &&
-                !(i === row && j === col)
-            ) {
-                if (currentGeneration[i][j]) {
-                    count++;
-                }
+                j < width
+            );
+            const isNotCurrentCell = !(i === row && j === col);
+
+            if (isValidIndex && isNotCurrentCell && currentGeneration[i][j]) {
+                count++;
             }
         }
     }
